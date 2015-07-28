@@ -78,7 +78,7 @@ class ClamavValidatorServiceProvider extends ServiceProvider {
 	{
 		$method = studly_case($rule);
 		$translation = $this->app['translator']->get('clamav-validator::validation');
-		$this->app['validator']->extend($rule, 'Lenrsmith\ClamavValidator\ClamavValidator@validate' . $method, $translation[$rule]);
+		$this->app['validator']->extend($rule, 'Lenrsmith\ClamavValidator\ClamavValidator@validate' . $method, isset($translation[$rule]) ? $translation[$rule] : array());
 		$this->app['validator']->replacer($rule, 'Lenrsmith\ClamavValidator\ClamavValidator@replace' . $method);
 	}
 
