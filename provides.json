@@ -1,5 +1,5 @@
 {
     "providers": [
-        "Sunspikes\\ClamavValidator\\ClamavValidatorServiceProvider"
+        "Lenrsmith\\ClamavValidator\\ClamavValidatorServiceProvider"
     ]
 }
