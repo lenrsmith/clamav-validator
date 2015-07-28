@@ -1,4 +1,4 @@
-<?php namespace Sunspikes\ClamavValidator;
+<?php namespace Lenrsmith\ClamavValidator;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -29,7 +29,7 @@ class ClamavValidatorServiceProvider extends ServiceProvider {
 	{
 //		$this->package('sunspikes/clamav-validator', 'clamav-validator');
 
-		$this->app->bind('Sunspikes\ClamavValidator\ClamavValidator', function($app)
+		$this->app->bind('Lenrsmith\ClamavValidator\ClamavValidator', function($app)
 		{
 			$validator = new ClamavValidator($app['translator'], array(), array(), $app['translator']->get('clamav-validator::validation'));
 
@@ -78,8 +78,8 @@ class ClamavValidatorServiceProvider extends ServiceProvider {
 	{
 		$method = studly_case($rule);
 		$translation = $this->app['translator']->get('clamav-validator::validation');
-		$this->app['validator']->extend($rule, 'Sunspikes\ClamavValidator\ClamavValidator@validate' . $method, $translation[$rule]);
-		$this->app['validator']->replacer($rule, 'Sunspikes\ClamavValidator\ClamavValidator@replace' . $method);
+		$this->app['validator']->extend($rule, 'Lenrsmith\ClamavValidator\ClamavValidator@validate' . $method, $translation[$rule]);
+		$this->app['validator']->replacer($rule, 'Lenrsmith\ClamavValidator\ClamavValidator@replace' . $method);
 	}
 
 

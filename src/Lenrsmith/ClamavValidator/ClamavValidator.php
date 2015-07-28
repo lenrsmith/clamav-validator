@@ -1,4 +1,4 @@
-<?php namespace Sunspikes\ClamavValidator;
+<?php namespace Lenrsmith\ClamavValidator;
 
 use Illuminate\Validation\Validator;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
