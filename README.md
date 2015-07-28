@@ -2,7 +2,7 @@
 
 [![Build Status](https://scrutinizer-ci.com/g/sunspikes/clamav-validator/badges/build.png?b=master)](https://scrutinizer-ci.com/g/sunspikes/clamav-validator) [![Code Quality](https://scrutinizer-ci.com/g/sunspikes/clamav-validator/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/sunspikes/clamav-validator)
 
-Custom Laravel 4 anti-virus validator for file uploads.
+Custom Laravel 5.0 anti-virus validator for file uploads.
 
 * [Installation](#installation)
 * [Usage](#usage)
@@ -18,14 +18,21 @@ In your `composer.json` file:
 
 ```json
 {
+    "repositories":
+        [
+			{
+                "type": "vcs",
+                "url": "https://github.com/lenrsmith/clamav-validator"
+            }
+        ],
 	"require": {
-		"laravel/framework": ">=4.1.21",
-		"sunspikes/clamav-validator": "dev-master"
+		"laravel/framework": "5.0.*",
+		"lenrsmith/clamav-validator": "dev-master"
 	}
 }
 ```
 
-**Note:** the minimum version of Laravel that's supported is 4.1.21. 
+**Note:** the minimum version of Laravel that's supported is 5.0. 
 
 Run `composer install` or `composer update` to install the package.
 
@@ -35,7 +42,7 @@ Add the following to your `providers` array in `app/config/app.php`:
 'providers' => array(
 	// ...
 
-	'Sunpikes\ClamavValidator\ClamavValidatorServiceProvider',
+	'Lenrsmith\ClamavValidator\ClamavValidatorServiceProvider',
 ),
 ```
 
@@ -54,6 +61,7 @@ $rules = array(
 
 <a name="changelog"></a>
 ## Change Log
+2015.07.28 - Updated to support Laravel 5.0 by Leonard Smith (https://github.com/lenrsmith/clamav-validator)
 
 2014.12.05 - Initial version, using extension php-clamav
 
