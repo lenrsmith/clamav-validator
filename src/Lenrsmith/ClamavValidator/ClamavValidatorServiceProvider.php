@@ -27,7 +27,7 @@ class ClamavValidatorServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('sunspikes/clamav-validator', 'clamav-validator');
+//		$this->package('sunspikes/clamav-validator', 'clamav-validator');
 
 		$this->app->bind('Sunspikes\ClamavValidator\ClamavValidator', function($app)
 		{
