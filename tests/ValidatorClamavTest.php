@@ -1,6 +1,6 @@
 <?php
 
-use Sunspikes\ClamavValidator\ClamavValidator;
+use Lenrsmith\ClamavValidator\ClamavValidator;
 
 class ValidatorClamavTest extends PHPUnit_Framework_TestCase
 {

@@ -21,7 +21,7 @@ class ValidateServiceProviderTest extends PHPUnit_Framework_TestCase {
 		$container->shouldReceive('offsetGet')->with('translator')->andReturn($translator);
 		$container->shouldReceive('offsetGet')->with('validator')->andReturn($factory);
 
-		$sp = Mockery::mock('Sunspikes\ClamavValidator\ClamavValidatorServiceProvider[package]', array($container));
+		$sp = Mockery::mock('Lenrsmith\ClamavValidator\ClamavValidatorServiceProvider[package]', array($container));
 		$sp->shouldReceive('package');
 		$sp->boot();
 
@@ -30,7 +30,7 @@ class ValidateServiceProviderTest extends PHPUnit_Framework_TestCase {
 		foreach ($validator->getExtensions() as $rule => $class_and_method)
 		{
 			$this->assertTrue(in_array($rule, $sp->getRules()));
-			$this->assertEquals('Sunspikes\ClamavValidator\ClamavValidator@' . 'validate' . studly_case($rule), $class_and_method);
+			$this->assertEquals('Lenrsmith\ClamavValidator\ClamavValidator@' . 'validate' . studly_case($rule), $class_and_method);
 
 			list($class, $method) = Str::parseCallback($class_and_method, null);
 
