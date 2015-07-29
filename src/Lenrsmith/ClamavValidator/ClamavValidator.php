@@ -35,6 +35,10 @@ class ClamavValidator extends Validator
 	{
 		$file = $this->getFilePath($value);
 
+		// Set the permissions to allow us to scan file uploaded by PHP
+		// May need to set to 0666 on some systems.
+		chmod($file, '0660');
+
 		// Create a new socket instance
 		$socket = (new \Socket\Raw\Factory())->createClient(self::CLAMAV_UNIX_SOCKET);
 		
@@ -75,4 +79,8 @@ class ClamavValidator extends Validator
 		// fallback: we were likely passed a path already
 		return $file;
 	}	
+
+	protected function replaceClamav($message, $attribute, $rule, $parameters){
+		return 'ClamAV detected a virus in '.$attribute.'.';
+	}
 }
