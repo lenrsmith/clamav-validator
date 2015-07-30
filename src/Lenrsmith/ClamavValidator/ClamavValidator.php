@@ -79,8 +79,4 @@ class ClamavValidator extends Validator
 		// fallback: we were likely passed a path already
 		return $file;
 	}	
-
-	protected function replaceClamav($message, $attribute, $rule, $parameters){
-		return 'ClamAV detected a virus in '.$attribute.'.';
-	}
 }
