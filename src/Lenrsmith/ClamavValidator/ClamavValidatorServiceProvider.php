@@ -27,22 +27,16 @@ class ClamavValidatorServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-//		$this->package('sunspikes/clamav-validator', 'clamav-validator');
-
-		$this->app->bind('Lenrsmith\ClamavValidator\ClamavValidator', function($app)
-		{
-			$validator = new ClamavValidator($app['translator'], array(), array(), $app['translator']->get('clamav-validator::validation'));
-
-			if (isset($app['validation.presence']))
-			{
-				$validator->setPresenceVerifier($app['validation.presence']);
-			}
-
-			return $validator;
-
-		});
-
-		$this->addNewRules();
+        $this->app['validator']
+            ->resolver(function($translator, $data, $rules, $messages)
+                {
+                    return new ClamavValidator(
+                        $translator,
+                        $data,
+                        $rules,
+                        $messages
+                    );
+                });
 	}
 
 	/**
